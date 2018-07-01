@@ -1,0 +1,20 @@
+启动项目：npm run dev
+
+提交文件：npm install vue --save
+
+git提交步骤
+（1）进入要上传的项目的根目录。
+
+（2）执行git init命令，将当前项目生成本地的git管理，生成.git文件。
+
+（3）git add. 将当前项目关联到git仓库中。. 为你要关联的文件。
+
+（4）git commit -m "注释" 将当前项目提交到git仓库中
+
+ （5） git remote add origin https://github.com/longshenaa/littlee.git   (连接地址为仓库地址) 将项目 关联到github上的仓库地址
+
+  （6）git push -u origin master  将项目上传到github上。 
+
+
+  index.vue 			 首页列表
+  listContent.vue	 列表内容页

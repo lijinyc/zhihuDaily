@@ -1,5 +1,8 @@
 <template>
     <div>
+       <div class="title">
+           <img src="https://pic2.zhimg.com/v2-88e121f6e50424b257a256ee87c808c9.jpg">
+       </div>
         <h3>今日热闻</h3>
         <ul>
           <li v-for='item in lists'
@@ -34,35 +37,27 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-body{
-  background: #f5f5f5;
-}
- body,h1,h2,h3,h4,h5,h6,p,dl,dd{
-  margin: 0;
-}
-ul,ol{
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.title{
+    max-height: 375px;
+    overflow: hidden;
 }
 li{
   list-style: none;
   background: #fff;
-    padding: 15px;
-    border: 1px solid #f5f5f5;
-    margin-top: 20px;
-    overflow: auto;
+  padding: 15px;
+  border: 1px solid #f5f5f5;
+  margin-top: 20px;
+  /*overflow: auto;*/
+  height: 40px;
 }
-.rwList{
-  width: 600px;
-  margin: 0 auto;
-}
-#box li p{
+
+ li p{
   float: left;
-  width: 450px;
+  width: 450px; 
   line-height: 34px;
+  text-align: left;
 }
-#box img{
+li img{
   width: 85px;
   float: right;
 }
