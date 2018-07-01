@@ -19,14 +19,20 @@ function proxyEl(el, prop) {
 
   var source = el[prop]
 
+  if (prop == 'style') {
+    source = source.cssText
+  }
+
   if (!source) return
 
-  var domainReg = /([http|https]:\/\/)?(.*)?\//g
+  var domainReg = /(https?:\/\/.*)?\//g
   var match = domainReg.exec(source)
+
 
   if (!match) return
 
-  var domain = match[2]
+  var domain = match[1]
+
 
   var target = "";
   Object.keys(domainProxy).forEach((key) => {
@@ -40,14 +46,18 @@ function proxyEl(el, prop) {
 
   if (target) {
     var proxyTarget = source.replace(domain, target);
-    el[prop] = proxyTarget;
+    if (prop == 'style') {
+      el[prop].cssText = proxyTarget;
+    } else {
+      el[prop] = proxyTarget;
+    }
   }
 
 }
 
 function proxyChildren(el, type, prop) {
   var elements = el.querySelectorAll(type);
-  elements.forEach(function (child) {
+  [].forEach.call(elements, function (child) {
     proxyEl(child, prop)
   })
 }
@@ -57,8 +67,8 @@ Vue.directive('proxy', function (el, binding) {
   var bindingValue = binding.value
   var type = "img", prop = "src";
   if (bindingValue) {
-    if (bindingValue.contains(".")) {
-      [type, prop] = bindingValue.split['.']
+    if (bindingValue.includes(".")) {
+      [type, prop] = bindingValue.split('.')
     } else {
       prop = bindingValue
       type = el.tagName.toLowerCase()
