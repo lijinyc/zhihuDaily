@@ -1,7 +1,7 @@
 <template>
     <div>
        <div class="title">
-           <img src="https://pic2.zhimg.com/v2-88e121f6e50424b257a256ee87c808c9.jpg">
+           <img src="https://pic2.zhimg.com/v2-88e121f6e50424b257a256ee87c808c9.jpg" v-proxy>
        </div>
         <h3>今日热闻</h3>
         <ul>
@@ -9,7 +9,7 @@
            :key='item.id'
            @click='conFn(item.id)'
           >
-          <p>{{item.title}}</p><img :src='item.images' v-show='item.images'></li>
+          <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
           </li>
         </ul>
     </div>
@@ -25,11 +25,11 @@ export default {
             .then(function(response){
               This.lists =(response.data.stories);
               console.log(This.lists)
-            }) 
+            })
       },
       methods:{
-          conFn:function(id){ 
-            this.$router.push({ path: `/content/${id}` }) 
+          conFn:function(id){
+            this.$router.push({ path: `/content/${id}` })
           }
       }
 }
@@ -53,7 +53,7 @@ li{
 
  li p{
   float: left;
-  width: 450px; 
+  width: 450px;
   line-height: 34px;
   text-align: left;
 }

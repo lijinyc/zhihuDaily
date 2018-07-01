@@ -1,13 +1,13 @@
 <template>
-	<div class="conBox"> 
-		<!-- <div :style='{background:"url("+conString.image+")"}'> -->
-		<div :style='{background:"url(../assets/logo.png)"}'>
-			<!-- <img :src='conString.images' >  -->
+	<div class="conBox">
+		 <div :style='{background:"url("+conString.image+")"}' v-proxy="'style'">
+		<!--<div :style='{background:"url(../assets/logo.png)"}'>-->
+			 <!--<img :src='conString.image' >-->
 			<!-- <img src="../assets/logo.png"> -->
 			<p>{{conString.title}}</p>
 		</div>
 		<div class="content">
-			 <div v-html='conString.body'></div>
+			 <div v-html='conString.body' v-proxy.children="'img.src'"></div>
 		</div>
 
 	</div>
@@ -31,7 +31,7 @@ export default {
 <style scoped>
 .conBox{
  	position: relative;
- 	border: 1px solid #f4f4f4; 
+ 	border: 1px solid #f4f4f4;
  	padding: 0 40px;
  	background: #fff;
 }
@@ -46,7 +46,7 @@ export default {
 	font:bold 22px/62px '微软雅黑';
 }
 .meta{
-	line-height: 74px; 
+	line-height: 74px;
 	font-size: 16px;
 }
 .meta .author{
