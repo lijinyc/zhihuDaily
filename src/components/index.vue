@@ -9,7 +9,7 @@
            :key='item.id'
            @click='conFn(item.id)'
           >
-          <p>{{item.title}}</p><img :src='item.images' v-show='item.images'></li>
+          <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
           </li>
         </ul>
     </div>
@@ -25,11 +25,11 @@ export default {
             .then(function(response){
               This.lists =(response.data.stories);
               console.log(This.lists)
-            }) 
+            })
       },
       methods:{
-          conFn:function(id){ 
-            this.$router.push({ path: `/content/${id}` }) 
+          conFn:function(id){
+            this.$router.push({ path: `/content/${id}` })
           }
       }
 }
