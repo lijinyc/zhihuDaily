@@ -1,33 +1,44 @@
 <template>
     <div>
-       <div class="title">
-           <img src="https://pic2.zhimg.com/v2-88e121f6e50424b257a256ee87c808c9.jpg" v-proxy>
+       <div class="topConBox">
+           <horse-race :content='topCon'></horse-race>
        </div>
-        <h3>今日热闻</h3>
-        <ul>
-          <li v-for='item in lists'
-           :key='item.id'
-           @click='conFn(item.id)'
-          >
-          <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
-          </li>
-        </ul>
+       <div class="content">
+          <h3>今日热闻</h3>
+          <ul>
+            <li v-for='item in lists'
+             :key='item.id'
+             @click='conFn(item.id)'
+             id='item.id'
+            >
+            <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
+            </li>
+          </ul>
+       </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import horseRace from './horseRaceLamp.vue'
+
 export default {
-  data () {return {lists:[]}},
+  data () {return {lists:[],topCon:[],leftNumber:0,num:1,timer:null}},
   created:function(){
         var This=this;
         axios.get('/api/4/news/latest')
             .then(function(response){
               This.lists =(response.data.stories);
-              console.log(This.lists)
-            })
+              This.topCon=(response.data.top_stories);
+              // This.interFn();
+              console.log(This.topCon)
+            }) 
+      },
+     components: {
+        horseRace
       },
       methods:{
+         //点击列表传值给详情页
           conFn:function(id){
             this.$router.push({ path: `/content/${id}` })
           }
@@ -37,28 +48,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.title{
-    max-height: 375px;
-    overflow: hidden;
+.topConBox{
+    height: 375px;
+    width: 600px;
 }
-li{
+.content{
+    background: #fff;
+    padding:19px 15px 0;
+}
+.content li{
   list-style: none;
-  background: #fff;
+  background: #f4f4f4;
   padding: 15px;
   border: 1px solid #f5f5f5;
   margin-top: 20px;
-  /*overflow: auto;*/
-  height: 40px;
+  height: 50px;
+  border-radius: 5px; 
 }
 
- li p{
+.content li p{
   float: left;
   width: 450px;
-  line-height: 34px;
+  line-height: 44px;
   text-align: left;
 }
-li img{
-  width: 85px;
-  float: right;
+.content li img{
+    width: 70px;
+    float: right;
+    margin-top: -10px;
 }
 </style>
