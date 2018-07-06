@@ -15,6 +15,17 @@ module.exports = {
         target: 'https://news-at.zhihu.com',
         changeOrigin: true, // for vhosted sites, changes host header to match to target's host
         logLevel: 'debug'
+      },
+      '/img': {
+        target: 'https://pic1.zhimg.com',
+        pathRewrite: {
+          '^/img/' : '/'
+        },
+        headers:{
+          Referer:"https://pic1.zhimg.com"
+        },
+        changeOrigin: true, // for vhosted sites, changes host header to match to target's host
+        logLevel: 'debug'
       }
     },
 

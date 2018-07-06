@@ -2,6 +2,9 @@
 
 提交文件：npm install vue --save
 
+git拉取代码:
+   git pull 
+
 git提交步骤 
     第一次提交的情况下：(GitHub上已新建好项目后，本地第一次提交内容到该项目)
 		（1）进入要上传的项目的根目录。
@@ -38,4 +41,6 @@ git提交步骤
   listContent.vue	 列表内容页
 
 
+
   line-height: 2em;  //行高，1em=16px(像素)
+  letter-spacing:2px;//文字间距
