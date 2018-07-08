@@ -26,7 +26,7 @@
 <script>
 import axios from 'axios'
 export default {
-   props:['content'],//从index中传入的数据
+   props:['content'],//从index.vue中传入的数据
    data(){return {num:0}}, 
    created:function(){//组件创建完后
       this.timeFn();//执行定时器
@@ -34,7 +34,7 @@ export default {
    methods:{
      timeFn:function(){//定时器
          this.num=0;//当前显示的是第几张图片
-         this.timer=setInterval(this.rollFn,2000);
+         this.timer=setInterval(this.rollFn,4000);
      },
      rollFn:function(){//定时器函数
         this.num++;
@@ -49,22 +49,18 @@ export default {
         clearInterval(this.timer)
      },
      outFn:function(){//鼠标划出
-         this.timer=setInterval(this.rollFn,2000);
+         this.timer=setInterval(this.rollFn,4000);
      },
      beforeFn:function(el){//动画进入的开始状态
         var widthSize=parseInt(window.getComputedStyle(this.$refs.top).width);
-        // console.log(widthSize)
         el.style.transform='translateX('+widthSize+'px)' 
-          // console.log(el)
      },
      enterFn:function(el,done){//动画进入中
-        // console.log(el)
         el.style.transform='translateX(0px)';
         done();
      },
      leaveFn:function(el){//离开时候的状态
          var widthSize=-(parseInt(window.getComputedStyle(this.$refs.top).width));
-         // console.log(widthSize)
         el.style.transform='translateX('+widthSize+'px)'
      },
      imgFn:function(id){ //点击图片显示对应的内容
@@ -132,7 +128,8 @@ li p{
   background: #aca7a7;
   display: inline-block; 
   margin-right: 10px;
-   opacity: 0.9;
+  opacity: 0.9;
+  cursor: pointer;
 }
 .active{
   background: #fff !important;
