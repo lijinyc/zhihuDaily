@@ -19,14 +19,18 @@ export default {
 /*菜单栏*/
 .menu{ 
   /*X轴的偏移量   Y轴的偏移量*/
-  box-shadow: 0px 1px 3px  #e3e0e0 ;
+  box-shadow: 0px 1px 3px  #4893ec ;
   height: 60px;  
+  background: #4893ec ;
+  position: fixed; 
+  width: 100%;
+  top: 0;
+  z-index: 6;
 } 
 .menuContent{
   width: 600px;
   height: 100%;
   margin: 0 auto;
-  position: relative; 
 }
 </style>
 <style>
@@ -44,7 +48,7 @@ ul,ol{
 /*内容*/
 .rwList{
     max-width: 600px;
-    margin: 0 auto;
+    margin: 60px auto 0;
     min-width: 300px;
 }
 #app {

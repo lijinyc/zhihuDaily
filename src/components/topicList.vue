@@ -82,7 +82,7 @@ export default {
 .conBox{
   position: relative;
   border: 1px solid #f4f4f4;
-  background: #fff;
+  background: #fff; 
 } 
 .topBox{
   width: 600px;

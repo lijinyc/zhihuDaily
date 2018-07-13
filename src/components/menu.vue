@@ -1,10 +1,9 @@
 <template>
-	<div> 
-        <i class="iconfont icon-biaoxingfill"></i>
+	<div class="menuBox">  
         <ul class="menuUl">
             <li class="active">{{isName}}</li>
             <li @mouseover='overFn' @mouseleave='leaveFn'>主题列表</li>
-            <li @click='homePageFn' class="homePage">首页</li>
+            <li @click='homePageFn' class="homePage"><i class="iconfont icon-shouyefill"></i></li>
          </ul>
          <div class="topic" :class='{isShowClass:isShow}' @mouseover='overFn' @mouseleave='leaveFn'>
               <i></i>
@@ -50,8 +49,12 @@
 	}
 </script>
 <style scoped>
- @import '../assets/iconfont.css'
+ @import '../assets/iconfont.css';
 /*菜单*/  
+.menuBox{
+  width: 100%;
+  position: relative;
+}
 .menu a{
     text-decoration: none;
     color: #000;
@@ -70,9 +73,9 @@
     position: absolute;
     top: -16px;
     left: 169px;
-    border-right: 15px solid #f4f4f4;
+    border-right: 15px solid #4893ec;
     border-bottom: 16px solid #fff;
-    border-left: 16px solid #f4f4f4;
+    border-left: 16px solid #4893ec;
 }
 .topic ul{
   margin:0 20px;
@@ -95,6 +98,7 @@
 .menuUl{
   line-height: 60px;
   overflow: auto;
+  color: #e4e1e1;
 }
 .menuUl li{
   float: left;
@@ -105,15 +109,22 @@
  	cursor: pointer;
 }
 .menuUl li:nth-child(3){
-  cursor: pointer;
   float: right;
   margin-right: 10px;
-  text-align: right;
+  text-align: right; 
+}
+.menuUl li:nth-child(3) i{
+  font-size: 22px;
+  cursor: pointer;
+}
+.menuUl li:nth-child(3) i:hover{
+  color: #fff;
 }
 .active{
-  color: #4893ec !important;  
+  color: #fff !important;  
 }
 .isShowClass{
    display: none;
 }
+
 </style>

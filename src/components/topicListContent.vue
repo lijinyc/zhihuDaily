@@ -91,6 +91,9 @@ export default {
 	color: #474747;
 	font-family: '微软雅黑'; 
 }
+.conBox .question img{
+	max-width: 100%;
+}
 .conBox .question-title{
 	margin-top: 24px;
 	font:bold 22px/30px'微软雅黑';

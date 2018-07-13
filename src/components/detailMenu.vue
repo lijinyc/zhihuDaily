@@ -1,9 +1,9 @@
 <template>
 	<div class="detai">
-		<p @click='backFn'>后退</p>
+		<p @click='backFn'><i class="iconfont icon-xiangzuo1"></i></p>
 		 <ul>
-		 		<li>评论<span>{{list.comments}}</span></li>
-		 		<li>点赞<span>{{list.popularity}}</span></li>
+		 		<li><i class="iconfont icon-liuyanfill"></i><span>{{list.comments}}</span></li>
+		 		<li><i class="iconfont icon-zantongfill"></i><span>{{list.popularity}}</span></li>
 		 </ul>
 	</div>
 </template>
@@ -27,6 +27,11 @@
 	}
 </script>
 <style scoped>
+ @import '../assets/iconfont.css';
+.detai{
+	color: #e4e1e1;
+	font-size: 17px;
+}
 .detai p,.detai li{
 	float: left;
 	line-height: 60px;
@@ -40,5 +45,8 @@
 }
 .detai li span{
 	margin-left: 5px;
+}
+i:hover{
+	color: #fff;
 }
 </style>
