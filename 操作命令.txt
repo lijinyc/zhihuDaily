@@ -1,0 +1,97 @@
+启动项目：npm run dev
+
+提交文件：npm install vue --save
+
+git拉取代码:
+   git pull 
+
+git提交步骤 
+    第一次提交的情况下：(GitHub上已新建好项目后，本地第一次提交内容到该项目)
+		（1）进入要上传的项目的根目录。
+
+		（2）执行git init命令，将当前项目生成本地的git管理，生成.git文件。
+
+		（3）git add. 将当前项目关联到git仓库中。. 为你要关联的文件。
+
+		（4）git commit -m "注释" 将当前项目提交到git仓库中
+
+		 （5） git remote add origin https://github.com/longshenaa/littlee.git   (连接地址为仓库地址) 将项目 关联到github上的仓库地址
+
+		  （6）git push -u origin master  将项目上传到github上。 
+
+	再次提交情况下：（GitHub中已有该项目内容，在本地该项目内容被改变后的提交方式）
+	    11、把本地的文件上传到github上
+		 		1、添加到暂存区(过渡层，避免误操作，保护工作区和版本区)
+			 			git add 文件名				将单个文件放到暂存区
+			   			git add .					将多个文件放到暂存区
+			 		2、添加到版本区
+			  			git commit -m '注释'			将文件放到版本区
+			  			git commit -a -m '注释'		从本地直接到版本区，跳过了暂存区
+			   			每一次改动的内容都需要注释一下，容易查看版本
+			  		3、添加到github上
+			  		（首次用新的分支提交，可以执行git push -u origin 分支名，再次提交的时候就直接执行git push就可以了）
+			   			git push origin master  （master最高权限的分支名字）
+			  			这个步骤可能会提示要输入密码，输入注册时候的用户名与密码就可以
+			  			提交完成后在网页里刷新就能看到提交的文件
+			  		
+			  		文件在本地修改的时候，可以随时git status，查看现在的状态
+
+
+  分支
+	  	git branch					查找分支
+	  	git branch 新分支名			新建分支
+	  	git checkout 分支名			切换分支
+	  	git checkout -b 新分支名		快速新建并切换
+	  	git merge 分支名				合并分支
+	  	git branch -d 分支名			删除分支
+
+
+
+  index.vue 					首页列表
+  listContent.vue	 		列表内容页
+  horseRaceLamp.vue 	滚动组件
+  menu.vue					菜单栏页
+  topicList.vue				点击主题列表的页
+  detailMenu.vue         详情页的菜单栏
+  topicListContent.vue 主题列表内容页
+
+
+
+
+  line-height: 2em;  //行高，1em=16px(像素)
+  letter-spacing:2px;//文字间距
+  vertical-align: middle; //图片居中方式
+
+
+  vueRouter传值方式 
+	 传值：this.$router.push({path:`/topicList/${id}`})  
+	 获取：this.$route.params.id
+	 路由：{ path: '/content/:id',component: index}
+	 路由展示(试图): <router-view />
+
+	 传值：this.$router.push({ path:'topicList',query: {name:a}});
+	 获取：this.$route.query.name
+	 路由：{ path: '/content',component: index}
+
+	 //key和value值是一样的时候可以直接缩写成{{name}}
+	 传值：	this.$router.push({ path:`/topicList/${id}`,query: {name:name}});  
+	 获取id： this.$route.params.id
+	 获取name：this.$route.query.name 
+	 路由：{ path: '/content',component: index}
+
+ vueRouter一个路由地址展示多个试图<router-view />(如：两个页面(.vue)显示在一个页面中(.vue))
+ 	引入的页面：
+ 				import index from '@/components/index'
+ 				import menu from '@/components/menu' 
+ 	路由：{path:'/content/:id',components:{name1:index,name2:menu}}//分别给路由取个名字
+ 	展示区：
+ 			<div class='conBox'>
+ 				<div class='top'>
+	 				  <router-view name='name1'/>
+	 			</div>
+	 			<div class='list'>
+	 				  <router-view name='name2'/>
+	 			</div>
+ 			</div>
+
+
