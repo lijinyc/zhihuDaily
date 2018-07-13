@@ -26,7 +26,7 @@
 <script>
 import axios from 'axios'
 export default {
-   props:['content'],//从index.vue中传入的数据
+   props:['content'],//从index.vue中接收到的数据 
    data(){return {num:0}}, 
    created:function(){//组件创建完后
       this.timeFn();//执行定时器
@@ -77,8 +77,8 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
-  background: #000;
-  z-index: 200;
+/*  background: #000;
+  z-index: 200;*/
 }
 .backBox{
   background: #000;
@@ -95,6 +95,7 @@ ul{
 }
 li{
   height: 100%; 
+  width: 100%;
   position: absolute;
 }
 li img{

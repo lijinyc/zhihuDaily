@@ -6,12 +6,13 @@
        <div class="content">
             <p class="conTitle">今日热闻</p>
             <ul>
-                <li v-for='item in lists'
-                 :key='item.id'
-                 @click='conFn(item.id)'
-                 id='item.id'
+                <li 
+                    v-for='item in lists'
+                    :key='item.id'
+                   @click='conFn(item.id)'
+                    id='item.id'
                 >
-                <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
+                  <img :src='item.images' v-show='item.images' v-proxy><p>{{item.title}}</p>
                 </li>
             </ul>
               <div class="frontDate" v-for='pre in preData'> 
@@ -23,7 +24,7 @@
                         :key='item.id'
                         @click='conFn(item.id)'
                       >
-                      <p>{{item.title}}</p><img :src='item.images' v-show='item.images' v-proxy></li>
+                        <img :src='item.images' v-show='item.images' v-proxy><p>{{item.title}}</p>
                       </li>
                 </ul>
             </div>
@@ -38,7 +39,7 @@ import axios from 'axios'
 import horseRace from './horseRaceLamp.vue'
 
 export default {
-  data () {return {lists:[],topCon:[],preData:[]}},
+  data () {return {lists:[],topCon:[],preData:[],topicList:[]}},
   created:function(){ 
         var This=this;
         axios.get('/api/4/news/latest')
@@ -46,6 +47,7 @@ export default {
               This.lists =(response.data.stories);
               This.topCon=(response.data.top_stories);
             }) ;
+            
             //当前日期
             this.d=new Date();
             this.dateVue=this.d.getFullYear()+this.formatFn(this.d.getMonth()+1)+this.formatFn(this.d.getDate());  
@@ -53,7 +55,7 @@ export default {
      components: {
         horseRace
       },
-      methods:{
+      methods:{ 
          //点击列表传值给详情页
           conFn:function(id){
             this.$router.push({ path: `/content/${id}` })
@@ -83,10 +85,10 @@ export default {
           }
       }
 }
-</script>
-
+</script> 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/*内容*/
 .topConBox{
     height: 375px;
     width: 600px;
@@ -112,14 +114,11 @@ export default {
 }
 
 .content li p{
-  float: left;
-  width: 450px;
-  line-height: 30px;
-  text-align: left;
+  line-height: 30px; 
 }
 .content li img{
-    width: 70px;
-    float: right; 
+  width: 70px;
+  float: right; 
 }
 .button{
     background: #4893ec;

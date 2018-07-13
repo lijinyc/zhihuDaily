@@ -1,15 +1,34 @@
 <template>
-  <div id="app" class='rwList'>
-         <router-view/>
+  <div> 
+      <div class="menu">
+          <div class="menuContent">
+              <router-view name='menu'/>
+          </div>
+      </div>
+      <div id="app" class='rwList'>
+             <router-view name='index'/>
+      </div>
   </div>
 </template>
 
-<script>
-export default {
-  
+<script>  
+export default { 
 }
 </script>
-
+<style scoped>
+/*菜单栏*/
+.menu{ 
+  /*X轴的偏移量   Y轴的偏移量*/
+  box-shadow: 0px 1px 3px  #e3e0e0 ;
+  height: 60px;  
+} 
+.menuContent{
+  width: 600px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative; 
+}
+</style>
 <style>
 body{
   background: #f5f5f5;
@@ -21,7 +40,8 @@ ul,ol{
   margin: 0;
   padding: 0;
   list-style: none;
-}
+} 
+/*内容*/
 .rwList{
     max-width: 600px;
     margin: 0 auto;
