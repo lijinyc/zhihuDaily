@@ -7,8 +7,10 @@
                   :key='item.id'
                   class="list-complete-item"
                   v-if='index==num'
+                  :style='{background:"url("+item.image+") center"}'
+                  v-proxy="'style'" 
               >
-                <img :src="item.image"  v-proxy> 
+                <!-- <img :src="item.image"  v-proxy>  -->
                 <p>{{item.title}}</p>
                  <div class="backBox" @click='imgFn(item.id)'></div>
               </li>
@@ -76,9 +78,7 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  position: relative;
-/*  background: #000;
-  z-index: 200;*/
+  position: relative; 
 }
 .backBox{
   background: #000;
@@ -97,6 +97,7 @@ li{
   height: 100%; 
   width: 100%;
   position: absolute;
+  background-size: cover !important;
 }
 li img{
   width: 100%;
@@ -107,7 +108,7 @@ li p{
   right: 0;
   margin: auto;
   color: #fff;
-  font-size: 22px;
+  font-size:1.375rem;
   width: 80%;
   bottom: 42px; 
    z-index: 10;

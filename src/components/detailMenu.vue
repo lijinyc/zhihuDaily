@@ -30,17 +30,22 @@
  @import '../assets/iconfont.css';
 .detai{
 	color: #e4e1e1;
-	font-size: 17px;
+	font-size: 1.062rem;
 }
-.detai p,.detai li{
+.detai p{
 	float: left;
 	line-height: 60px;
-	cursor: pointer;
+	cursor: pointer; 
+	margin-left: 5%;
 }
 .detai ul{
 	float: right;
+	margin-right: 5%;
 }
 .detai li{
+	float: left;
+	line-height: 60px;
+	cursor: pointer; 
 	margin-right: 20px; 
 }
 .detai li span{

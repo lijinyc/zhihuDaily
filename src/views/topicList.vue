@@ -1,10 +1,7 @@
 <template>
-    <div> 
-      <div class="conBox">
-          <div class="topBox" :style='{background:"url("+dataInfo.background+")"}' v-proxy="'style'">
-                <!-- <img :src="dataInfo.image"  v-proxy> -->
-                <p>{{dataInfo.description}}</p>
-          </div>
+    <div>  
+      <div class="topBox">
+          <cover :image='dataInfo.background' :title='dataInfo.description'></cover>
       </div>
        <div class="content">
             <div class="chiefEditor">
@@ -21,33 +18,35 @@
                     :key='item.id'  
                     @click='listConFn(item.id)'
                 >
-                    <img :src='item.images' v-show='item.images' v-proxy><p>{{item.title}}</p>
+                    <img :src='item.images' v-show='item.images' v-proxy>
+                    <p>{{item.title}}</p>
                 </li>
             </ul>
             <div class="button" @click='buttonFn'>查看更多</div> 
-       </div>
-
+       </div> 
     </div>
-</template>
-
+</template> 
 <script>
 import axios from 'axios' 
+import cover from '../components/cover.vue'
 export default { 
   /* 
   topicList 列表信息
-  historyList 历史列表信息
   lastNum 列表信息中的最后一条数据
   dataInfo  data信息 
   */
   data () {return {topicList:[],lastNum:[],dataInfo:[]}},
   watch: {
-    '$route' (to, from) {
-        this.listFn(); //在相同界面中，加载不同的数据
-    } 
+      '$route' (to, from) {
+          this.listFn(); //在相同界面中，加载不同的数据
+      } 
   },
   created:function(){  
-        this.listFn();
+      this.listFn();
    } ,
+   components: {
+      cover
+    },
   methods:{ 
       listFn:function(){
          //重置缓存数据
@@ -77,59 +76,29 @@ export default {
 }
 </script> 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-/*头部*/
-.conBox{
-  position: relative;
-  border: 1px solid #f4f4f4;
-  background: #fff; 
-} 
+<style scoped>  
 .topBox{
-  width: 600px;
+  width: 100%;
   height: 375px;
   overflow: hidden;
   position: relative; 
-}
-.topBox img{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
-.topBox p{
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  color: #fff;
-  font-size: 22px;
-  width: 80%;
-  bottom: 42px;  
-  z-index: 2;
-}
-.topBox span{
-  position: absolute;
-  color: #edecec;
-  font-size: 14px;
-  right: 78px;
-  bottom: 10px;
-   z-index: 2;
+  background-size: cover !important;
 }
 /*列表*/
 .content{
-    background: #fff;
-    padding:0 15px 19px;
+  background: #fff;
+  padding:0 15px 19px;
 }
 .chiefEditor{
-    font-size: 15px;
-    padding-top: 8px; 
-    color: #9c9c9c;
+  font-size: 0.937rem;
+  padding-top: 8px; 
+  color: #9c9c9c;
 }
 .chiefEditor img{
-    width: 32px;
-    vertical-align: middle;
-    border-radius: 20px;
-    margin-left: 16px;
+  width: 32px;
+  vertical-align: middle;
+  border-radius: 20px;
+  margin-left: 16px;
 }
 .content li{
   list-style: none;
@@ -141,7 +110,6 @@ export default {
   border-radius: 5px; 
   cursor: pointer;
 }
-
 .content li p{
   line-height: 30px; 
 }
@@ -150,14 +118,19 @@ export default {
   float: right; 
 }
 .button{
-    background: #4893ec;
-    height: 56px;
-    line-height: 56px;
-    text-align: center;
-    font-weight: bold;
-    margin: 20px auto 0;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #fff;
-} 
+  background: #4893ec;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto 0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;
+}  
+@media screen and (max-width: 360px){
+  .topBox{
+      height: 60vw; 
+  }
+}
 </style>
