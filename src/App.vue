@@ -10,7 +10,6 @@
       </div>
   </div>
 </template>
-
 <script>  
 export default { 
 }
@@ -32,6 +31,20 @@ export default {
   height: 100%;
   margin: 0 auto;
 }
+/*max-width:360px (屏幕的值小于360的就执行)*/
+/*max 最大(如果最大高度/宽度大于屏幕值的话就执行)，min 最小*/
+@media screen and (max-width: 360px){
+  .menuContent{
+    width: 100%;
+  }
+  .menuUl li{
+    width: 0;
+  } 
+  .rwList{
+    max-width: 100%;
+     min-width: 100%;
+  }
+}
 </style>
 <style>
 body{
@@ -47,9 +60,9 @@ ul,ol{
 } 
 /*内容*/
 .rwList{
-    max-width: 600px;
-    margin: 60px auto 0;
-    min-width: 300px;
+  max-width: 600px;
+  margin: 60px auto 0;
+  min-width: 300px;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

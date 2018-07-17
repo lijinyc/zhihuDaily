@@ -1,9 +1,13 @@
 <template>
 	<div class="menuBox">  
         <ul class="menuUl">
+            <li>
+                <i  @mouseover='overFn' @mouseleave='leaveFn' class="iconfont icon-caidan"></i>
+              </li>
             <li class="active">{{isName}}</li>
-            <li @mouseover='overFn' @mouseleave='leaveFn'>主题列表</li>
-            <li @click='homePageFn' class="homePage"><i class="iconfont icon-shouyefill"></i></li>
+            <li  class="homePage">
+                <i @click='homePageFn' class="iconfont icon-shouyefill"></i>
+             </li>
          </ul>
          <div class="topic" :class='{isShowClass:isShow}' @mouseover='overFn' @mouseleave='leaveFn'>
               <i></i>
@@ -11,7 +15,9 @@
                   <li v-for='item in topicList'
                        :key='item.id' 
                        @click='listClick(item.id,item.name)' 
-                    ><span>{{item.name}}</span></li>
+                    >
+                      <span>{{item.name}}</span>
+                  </li>
             </ul>
          </div> 
 	</div>
@@ -33,18 +39,19 @@
 			 }
 		},
 		methods:{ 
-	         overFn:function(){//鼠标划入
-	            this.isShow=false;
-	         }, 
-	         leaveFn:function(){//鼠标划出
-	           this.isShow=true;
-	         },
-	         listClick:function(id,name){  //点击主题列表
-            	this.$router.push({ path:`/topicList/${id}`,query: {name}});
-          	},
-            homePageFn:function(){//点击首页
-              this.$router.push({path:'/'});
-            }
+       overFn:function(){//鼠标划入
+          this.isShow=false;
+       }, 
+       leaveFn:function(){//鼠标划出
+         this.isShow=true;
+       },
+       listClick:function(id,name){  //点击主题列表
+          this.isShow=true;
+        	this.$router.push({ path:`/topicList/${id}`,query: {name}});
+      	},
+        homePageFn:function(){//点击首页
+          this.$router.push({path:'/'});
+        }
 		}
 	}
 </script>
@@ -54,77 +61,96 @@
 .menuBox{
   width: 100%;
   position: relative;
-}
-.menu a{
-    text-decoration: none;
-    color: #000;
 } 
 .topic{
-   position: absolute;
-    z-index: 6;
-    background: #fff;
-    width: 100%;
-    top: 60px;
-    border: 1px solid #f4f4f4;
-    padding: 26px 0;
+  position: absolute;
+  z-index: 6;
+  background: #fff;
+  width: 100%;
+  top: 60px;
+  border: 1px solid #f4f4f4;
+  padding: 26px 0;
+  border-radius: 2px;
 }
 .topic i{ 
-    background: red;
-    position: absolute;
-    top: -16px;
-    left: 169px;
-    border-right: 15px solid #4893ec;
-    border-bottom: 16px solid #fff;
-    border-left: 16px solid #4893ec;
+  background: red;
+  position: absolute;
+  top: -16px;
+  left: 31px;
+  border-right: 15px solid #4893ec;
+  border-bottom: 16px solid #fff;
+  border-left: 16px solid #4893ec;
 }
 .topic ul{
   margin:0 20px;
 }
 .topic li{
-    float: left;
-    width: 163px;
-    line-height: 47px;
-     border: 1px solid #f4f4f4; 
-    margin: 16px 10px;
-    background: #f4f4f4;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+  float: left;
+  width: 29%;
+  line-height: 47px;
+  margin: 16px 2.16%;
+  background: #f4f4f4;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
 }
 .topic li:hover{
-   background:#4893ec; 
-   color: #fff;
+  background:#4893ec; 
+  color: #fff;
 }
 .menuUl{
   line-height: 60px;
   overflow: auto;
   color: #e4e1e1;
+  margin: 0 5%;
 }
 .menuUl li{
-  float: left;
- width: 150px;
-  font-size: 18px; 
+  float: left; 
+  font-size: 1.125rem;  
+}
+.menuUl li:nth-child(1){ 
+  width: 10%;
+}
+.menuUl li:nth-child(1) i{
+  cursor: pointer;
+  font-size: 1.687rem;
 }
 .menuUl li:nth-child(2){
- 	cursor: pointer;
+  cursor: pointer;
+  width: 80%;
+  text-align: center; 
 }
 .menuUl li:nth-child(3){
   float: right;
-  margin-right: 10px;
   text-align: right; 
+  width: 10%;
 }
 .menuUl li:nth-child(3) i{
-  font-size: 22px;
+  font-size: 1.375rem;
   cursor: pointer;
 }
-.menuUl li:nth-child(3) i:hover{
+.menuUl li i:hover{
   color: #fff;
 }
 .active{
   color: #fff !important;  
 }
 .isShowClass{
-   display: none;
+  display: none;
 }
-
+@media screen and (max-width: 360px){
+  .menuUl li{
+    width: 112px;
+  }
+  .topic ul{
+    margin: 0;
+  }
+  .topic li{
+    font-size: 0.812rem;
+    line-height: 38px;
+  }
+  .topic i{
+    left: 7px;
+  }
+}
 </style>

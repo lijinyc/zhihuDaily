@@ -9,8 +9,7 @@
                 <li 
                     v-for='item in lists'
                     :key='item.id'
-                   @click='conFn(item.id)'
-                    id='item.id'
+                   @click='conFn(item.id)' 
                 >
                   <img :src='item.images' v-show='item.images' v-proxy><p>{{item.title}}</p>
                 </li>
@@ -29,28 +28,26 @@
                 </ul>
             </div>
             <div class="button" @click='buttonFn'>查看历史</div> 
-       </div>
-
+       </div> 
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import horseRace from './horseRaceLamp.vue'
+import horseRace from '../components/horseRaceLamp.vue'
 
 export default {
-  data () {return {lists:[],topCon:[],preData:[],topicList:[]}},
+  data () {return {lists:[],topCon:[],preData:[]}},
   created:function(){ 
         var This=this;
         axios.get('/api/4/news/latest')
             .then(function(response){
               This.lists =(response.data.stories);
               This.topCon=(response.data.top_stories);
-            }) ;
-            
-            //当前日期
-            this.d=new Date();
-            this.dateVue=this.d.getFullYear()+this.formatFn(this.d.getMonth()+1)+this.formatFn(this.d.getDate());  
+            }) ; 
+        //当前日期
+        this.d=new Date();
+        this.dateVue=this.d.getFullYear()+this.formatFn(this.d.getMonth()+1)+this.formatFn(this.d.getDate());  
       },
      components: {
         horseRace
@@ -58,7 +55,7 @@ export default {
       methods:{ 
          //点击列表传值给详情页
           conFn:function(id){
-            this.$router.push({ path: `/content/${id}` })
+            this.$router.push({ path: `/content/${id}`});
           },
           //点击前一天信息
           buttonFn:function(){
@@ -90,17 +87,17 @@ export default {
 <style scoped>
 /*内容*/
 .topConBox{
-    height: 375px;
-    width: 600px;
+  height: 375px;
+  width: 600px;
 }
 .content{
-    background: #fff;
-    padding:0 15px 19px;
+  background: #fff;
+  padding:0 15px 19px;
 }
 .conTitle{
-    font-size: 14px;
-    padding-top: 20px;
-    margin-left: 4px;
+  font-size: 0.875rem;
+  padding-top: 20px;
+  margin-left: 4px;
 }
 .content li{
   list-style: none;
@@ -110,7 +107,7 @@ export default {
   margin-top: 20px; 
   overflow: auto;
   border-radius: 5px; 
-  cursor: pointer;
+  cursor: pointer;        
 }
 
 .content li p{
@@ -121,17 +118,26 @@ export default {
   float: right; 
 }
 .button{
-    background: #4893ec;
-    height: 56px;
-    line-height: 56px;
-    text-align: center;
-    font-weight: bold;
-    margin: 20px auto 0;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #fff;
+  background: #4893ec;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto 0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;
 }
 .day{
   margin-left: 10px;
+}
+@media  screen and (max-width: 360px){
+  .content{
+    padding: 0 10px 19px;
+   }
+   .topConBox{
+      width: 100%;
+      height: 64vw;
+   }
 }
 </style>

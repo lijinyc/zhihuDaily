@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
-import index from '@/components/index'
-import listContent from '@/components/listContent'
+import index from '@/views/index'
+import listContent from '@/views/listContent'
 import menu from '@/components/menu'
-import topicList from '@/components/topicList' 
+import topicList from '@/views/topicList' 
 import detailMenu from '@/components/detailMenu'
-import topicListContent from '@/components/topicListContent'
+import topicListContent from '@/views/topicListContent'
 
 
 Vue.use(Router)
@@ -17,6 +17,6 @@ export default new Router({
  	{path:'/content/:id',components:{index:listContent,menu:detailMenu}},
  	{path:'/topicList/:id',components:{index:topicList,menu}},
  	{path:'/topicListContent/:id',components:{index:topicListContent,menu:detailMenu}}
-    // { path: '/',name: 'HelloWorld',component: HelloWorld}
+    // { path: '/',component: HelloWorld}
   ]
 })
