@@ -1,7 +1,11 @@
 <template>
     <div>
        <div class="topConBox">
-           <horse-race :content='topCon'></horse-race>
+         <component
+            v-bind:is="currTab"
+            :content='topCon'
+          ></component>
+         <!--   <horse-race :content='topCon'></horse-race> -->
        </div>
        <div class="content">
             <p class="conTitle">今日热闻</p>
@@ -37,13 +41,14 @@ import axios from 'axios'
 import horseRace from '../components/horseRaceLamp.vue'
 
 export default {
-  data () {return {lists:[],topCon:[],preData:[]}},
+  data () {return {currTab:'',lists:[],topCon:[],preData:[]}},
   created:function(){ 
         var This=this;
         axios.get('/api/4/news/latest')
             .then(function(response){
               This.lists =(response.data.stories);
               This.topCon=(response.data.top_stories);
+              This.currTab = 'horseRace';
             }) ; 
         //当前日期
         this.d=new Date();
