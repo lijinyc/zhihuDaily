@@ -88,8 +88,9 @@ export default {
       }
 }
 </script> 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<!-- Add "scoped" attribute to limit CSS to this component only --> 
+<style scoped lang="less">
+@import '../styles/public.less';
 /*内容*/
 .topConBox{
   height: 375px;
@@ -123,7 +124,7 @@ export default {
   float: right; 
 }
 .button{
-  background: #4893ec;
+  background: @color;
   height: 56px;
   line-height: 56px;
   text-align: center;

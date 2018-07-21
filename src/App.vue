@@ -13,14 +13,15 @@
 <script>  
 export default { 
 }
-</script>
-<style scoped>
+</script> 
+<style scoped lang="less">
+@import './styles/public.less';
 /*菜单栏*/
 .menu{ 
   /*X轴的偏移量   Y轴的偏移量*/
-  box-shadow: 0px 1px 3px  #4893ec ;
+  box-shadow: 0px 1px 3px  @color ;
   height: 60px;  
-  background: #4893ec ;
+  background: @color ;
   position: fixed; 
   width: 100%;
   top: 0;

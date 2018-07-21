@@ -45,7 +45,7 @@ export default {
 }
 </style>
 <style>
-@import '../assets/publicStyle.css';
+@import '../styles/content.css';
 .conBox .content{
 	font-size: 1rem;
 	line-height: 36px;

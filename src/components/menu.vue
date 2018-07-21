@@ -23,40 +23,41 @@
 	</div>
 </template>
 <script>
-	import axios from 'axios'
-	export default {
-		data(){return {isShow:true,topicList:[],title:'首页'}},
-		created:function(){
-			var This=this;
-			axios.get('api/4/themes')
-	            .then(function(response){
-	              This.topicList=response.data.others;  
-	            });
-		},
-		computed:{
-			 isName:function(){
-			 	return this.$route.query.name?this.$route.query.name:this.title;
-			 }
-		},
-		methods:{ 
-       overFn:function(){//鼠标划入
-          this.isShow=false;
-       }, 
-       leaveFn:function(){//鼠标划出
-         this.isShow=true;
-       },
-       listClick:function(id,name){  //点击主题列表
-          this.isShow=true;
-        	this.$router.push({ path:`/topicList/${id}`,query: {name}});
-      	},
-        homePageFn:function(){//点击首页
-          this.$router.push({path:'/'});
-        }
-		}
+import axios from 'axios'
+export default {
+	data(){return {isShow:true,topicList:[],title:'首页'}},
+	created:function(){
+		var This=this;
+		axios.get('api/4/themes')
+            .then(function(response){
+              This.topicList=response.data.others;  
+            });
+	},
+	computed:{
+		 isName:function(){
+		 	return this.$route.query.name?this.$route.query.name:this.title;
+		 }
+	},
+	methods:{ 
+     overFn:function(){//鼠标划入
+        this.isShow=false;
+     }, 
+     leaveFn:function(){//鼠标划出
+       this.isShow=true;
+     },
+     listClick:function(id,name){  //点击主题列表
+        this.isShow=true;
+      	this.$router.push({ path:`/topicList/${id}`,query: {name}});
+    	},
+      homePageFn:function(){//点击首页
+        this.$router.push({path:'/'});
+      }
 	}
-</script>
-<style scoped>
- @import '../assets/iconfont.css';
+}
+</script> 
+<style scoped lang='less'>
+@import '../assets/iconfont.css';
+@import '../styles/public.less';
 /*菜单*/  
 .menuBox{
   width: 100%;
@@ -73,13 +74,15 @@
   border-radius: 2px;
 }
 .topic i{ 
-  background: red;
   position: absolute;
-  top: -16px;
-  left: 31px;
-  border-right: 15px solid #4893ec;
-  border-bottom: 16px solid #fff;
-  border-left: 16px solid #4893ec;
+  top: -32px;
+  left: 26px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: 16px;
+  border-color:transparent transparent white transparent;
+  border-style: dashed dashed solid dashed;
 }
 .topic ul{
   margin:0 20px;
@@ -95,7 +98,7 @@
   text-align: center;
 }
 .topic li:hover{
-  background:#4893ec; 
+  background:@color; 
   color: #fff;
 }
 .menuUl{
@@ -150,7 +153,9 @@
     line-height: 38px;
   }
   .topic i{
-    left: 7px;
+    left: 15px;
+    top: -28px;
+    border-width: 14px;
   }
 }
 </style>

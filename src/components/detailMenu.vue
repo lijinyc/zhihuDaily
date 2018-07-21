@@ -8,26 +8,25 @@
 	</div>
 </template>
 <script>
-	import axios from 'axios'
-	
-	export default{ 
-		data(){return {list:{}}},
-		created:function(){
-			var This=this;
-			axios.get('/api/4/story-extra/'+this.$route.params.id)
-					.then(function(response){
-						This.list=response.data; 
-					}) 
-		},
-		methods:{
-			backFn:function(){
-				  this.$router.go(-1);//后退
-			}
+import axios from 'axios'
+export default{ 
+	data(){return {list:{}}},
+	created:function(){
+		var This=this;
+		axios.get('/api/4/story-extra/'+this.$route.params.id)
+				.then(function(response){
+					This.list=response.data; 
+				}) 
+	},
+	methods:{
+		backFn:function(){
+			  this.$router.go(-1);//后退
 		}
 	}
+}
 </script>
 <style scoped>
- @import '../assets/iconfont.css';
+@import '../assets/iconfont.css';
 .detai{
 	color: #e4e1e1;
 	font-size: 1.062rem;

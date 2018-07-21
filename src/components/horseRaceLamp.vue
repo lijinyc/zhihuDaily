@@ -18,7 +18,6 @@
 import axios from 'axios'
 import { swiper, swiperSlide } from 'vue-awesome-swiper' 
 import 'swiper/dist/css/swiper.css'
-
 export default {
    props:['content'],//从index.vue中接收到的数据 
    data(){
@@ -26,7 +25,7 @@ export default {
         num:0,
         swiperOption:{ 
           loop:true,
-          autoplay:true, 
+          autoplay:false, 
           pagination:{
             el:'.swiper-pagination',
             clickable:true
@@ -62,6 +61,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+ 
 <style scoped> 
 .box{
   width: 100%;
@@ -103,7 +103,8 @@ export default {
   z-index: 5;
 } 
 </style>
-<style>
+<style lang="less">
+@import '../styles/public.less';
 .swiper-pagination span{
   width: 14px;
   height: 14px;
@@ -113,9 +114,10 @@ export default {
   margin-right: 10px;
   opacity: 0.9;
   cursor: pointer;
+
 }
 .swiper-pagination-bullet-active{
-  background: #007aff !important;
+  background: #fff !important;
   opacity: 1 !important;
 }
 </style>

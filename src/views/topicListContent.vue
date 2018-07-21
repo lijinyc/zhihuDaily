@@ -27,7 +27,7 @@ export default {
 }  
 </style>
 <style >  
-@import '../assets/publicStyle.css';
+@import '../styles/content.css';
 .conBox  a{ 
 	font-size: 1rem;
 	color: #bfbdbd;
