@@ -6,9 +6,9 @@
       </div> 
 </template>
 <script>
-	export default{
-		props:['image','title','author']
-	}
+export default{
+	props:['image','title','author']
+}
 </script>
 <style scoped>
 .imgBox{

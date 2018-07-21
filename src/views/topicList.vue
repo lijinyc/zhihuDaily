@@ -76,7 +76,8 @@ export default {
 }
 </script> 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>  
+<style scoped lang="less"> 
+@import '../styles/public.less'; 
 .topBox{
   width: 100%;
   height: 375px;
@@ -118,7 +119,7 @@ export default {
   float: right; 
 }
 .button{
-  background: #4893ec;
+  background: @color;
   height: 56px;
   line-height: 56px;
   text-align: center;
