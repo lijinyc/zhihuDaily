@@ -11,15 +11,14 @@
 import axios from 'axios'
 export default{ 
 	data(){return {list:{}}},
-	created:function(){
-		var This=this;
-		axios.get('/api/4/story-extra/'+this.$route.params.id)
-				.then(function(response){
-					This.list=response.data; 
+	created(){ 
+		axios.get(`/api/4/story-extra/${this.$route.params.id}`)
+				.then((response)=>{
+					this.list=response.data; 
 				}) 
 	},
 	methods:{
-		backFn:function(){
+		backFn(){
 			  this.$router.go(-1);//后退
 		}
 	}

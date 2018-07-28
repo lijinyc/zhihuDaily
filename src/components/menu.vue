@@ -26,30 +26,29 @@
 import axios from 'axios'
 export default {
 	data(){return {isShow:true,topicList:[],title:'首页'}},
-	created:function(){
-		var This=this;
+	created(){
 		axios.get('api/4/themes')
-            .then(function(response){
-              This.topicList=response.data.others;  
+            .then((response)=>{
+              this.topicList=response.data.others;  
             });
 	},
 	computed:{
-		 isName:function(){
-		 	return this.$route.query.name?this.$route.query.name:this.title;
+		 isName(){
+		 	return this.$route.query.name || this.title;
 		 }
 	},
 	methods:{ 
-     overFn:function(){//鼠标划入
+     overFn(){//鼠标划入
         this.isShow=false;
      }, 
-     leaveFn:function(){//鼠标划出
+     leaveFn(){//鼠标划出
        this.isShow=true;
      },
-     listClick:function(id,name){  //点击主题列表
+     listClick(id,name){  //点击主题列表
         this.isShow=true;
       	this.$router.push({ path:`/topicList/${id}`,query: {name}});
     	},
-      homePageFn:function(){//点击首页
+      homePageFn(){//点击首页
         this.$router.push({path:'/'});
       }
 	}

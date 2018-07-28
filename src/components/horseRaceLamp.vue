@@ -38,8 +38,7 @@ export default {
       swiperSlide
    },
    methods:{
-     imgFn:function(id){ //点击图片显示对应的内容
-      console.log(id);
+     imgFn(id){ //点击图片显示对应的内容 
         this.$router.push({path:`/content/${id}`});
      },
      /*鼠标移入停止轮播，鼠标离开 继续轮播*/ 
@@ -48,7 +47,7 @@ export default {
           this.swiper.autoplay.stop();
         }
       },
-     seleaveFn () {
+     seleaveFn() {
         if(this.swiper){
           this.swiper.autoplay.start();
        }
@@ -61,7 +60,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
- 
 <style scoped> 
 .box{
   width: 100%;
