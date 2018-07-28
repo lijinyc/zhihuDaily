@@ -50,7 +50,7 @@
 }
 .conBox .question-title{
 	margin-top: 24px;
-	font:bold 1.375rem/30px'微软雅黑';
+	font:bold 1.175rem/30px'微软雅黑';
 }
 .conBox .meta{
     line-height: 23px;
@@ -86,4 +86,7 @@
 } 
 .conBox .origin_image{
 	width: 100%;
+}
+.content h2{
+    font:bold 1.175rem/30px'微软雅黑';
 }

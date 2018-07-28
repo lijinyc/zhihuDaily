@@ -41,14 +41,13 @@ import axios from 'axios'
 import horseRace from '../components/horseRaceLamp.vue'
 
 export default {
-  data () {return {currTab:'',lists:[],topCon:[],preData:[]}},
-  created:function(){ 
-        var This=this;
+  data() {return {currTab:'',lists:[],topCon:[],preData:[]}},
+  created(){
         axios.get('/api/4/news/latest')
-            .then(function(response){
-              This.lists =(response.data.stories);
-              This.topCon=(response.data.top_stories);
-              This.currTab = 'horseRace';
+            .then((response)=>{
+              this.lists =(response.data.stories);
+              this.topCon=(response.data.top_stories);
+              this.currTab = 'horseRace';
             }) ; 
         //当前日期
         this.d=new Date();
@@ -59,30 +58,29 @@ export default {
       },
       methods:{ 
          //点击列表传值给详情页
-          conFn:function(id){
+          conFn(id){
             this.$router.push({ path: `/content/${id}`});
           },
           //点击前一天信息
-          buttonFn:function(){
-            var This=this; 
-             axios.get('api/4/news/before/'+this.dateVue)
-                     .then(function(response){ 
-                        This.dateVue=response.data.date; 
-                        This.preData.push(response.data); 
+          buttonFn(){ 
+             axios.get(`api/4/news/before/${this.dateVue}`)
+                     .then((response)=>{ 
+                        this.dateVue=response.data.date; 
+                        this.preData.push(response.data); 
                      });
           },
-          formatFn:function(d){
+          formatFn(d){
               return  d<10?'0'+d:d;
           },
-          dayFn:function(d){
-            return ['日','一','二','三','四','五','六'][d]
+          dayFn(d){
+            return ['日','一','二','三','四','五','六'][d];
           },
-          dataSliceFn:function(date){
+          dataSliceFn(date){
             // substr('从什么地方开始截取','截取几个')
             return (date.substr(4,2))+'月'+(date.substr(6,2))+'日'; 
           },
-          daySpanFn:function(date){
-           var b=date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2);
+          daySpanFn(date){
+           let b=date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2);
             return '星期'+this.dayFn(new Date(b).getDay())
           }
       }

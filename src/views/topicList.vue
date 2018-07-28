@@ -41,35 +41,33 @@ export default {
           this.listFn(); //在相同界面中，加载不同的数据
       } 
   },
-  created:function(){  
+  created(){  
       this.listFn();
    } ,
    components: {
       cover
     },
   methods:{ 
-      listFn:function(){
+      listFn(){
          //重置缓存数据
-          this.topicList=this.lastNum=this.dataInfo=[];
-          var This=this; 
-          axios.get('api/4/theme/'+this.$route.params.id)
-                  .then(function(response){ 
-                      This.topicList =(response.data.stories); 
-                      This.lastNum=This.topicList[This.topicList.length-1];
-                      This.dataInfo=response.data; 
+          this.topicList=this.lastNum=this.dataInfo=[]; 
+          axios.get(`api/4/theme/${this.$route.params.id}`)
+                  .then((response)=>{ 
+                      this.topicList =(response.data.stories); 
+                      this.lastNum=this.topicList[this.topicList.length-1];
+                      this.dataInfo=response.data; 
               }) ; 
       },
       //点击查看历史
-      buttonFn:function(){  
-        var This=this; 
-         axios.get('api/4/theme/'+this.$route.params.id+'/before/'+this.lastNum.id)
-                 .then(function(response){  
-                   This.topicList=This.topicList.concat(response.data.stories);  
-                    This.lastNum=This.topicList[This.topicList.length-1]; 
+      buttonFn(){   
+         axios.get(`api/4/theme/${this.$route.params.id}/before/${this.lastNum.id}`)
+                 .then((response)=>{ 
+                   this.topicList.push(...response.data.stories);  
+                    this.lastNum=this.topicList[this.topicList.length-1]; 
                  });
       },
        //点击列表进入详情页
-      listConFn:function(id){  
+      listConFn(id){  
           this.$router.push({ path: `/topicListContent/${id}` })
       }      
   }

@@ -13,11 +13,10 @@ import axios from 'axios'
 import cover from '../components/cover.vue'
 export default {
   data () {return {conString:[]}},
-  created:function(){
-		var This=this;
-		axios.get('/api/4/news/'+this.$route.params.id)
-				.then(function(response){
-					This.conString=response.data;
+  created(){ 
+		axios.get(`/api/4/news/${this.$route.params.id}`)
+				.then((response)=>{
+					this.conString=response.data;
 		        })
    },
   components: {
