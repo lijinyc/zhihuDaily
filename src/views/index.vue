@@ -51,7 +51,7 @@ export default {
             }) ; 
         //当前日期
         this.d=new Date();
-        this.dateVue=this.d.getFullYear()+this.formatFn(this.d.getMonth()+1)+this.formatFn(this.d.getDate());  
+        this.dateVue=this.d.getFullYear()+this.formatFn(this.d.getMonth()+1)+this.formatFn(this.d.getDate());
       },
      components: {
         horseRace
@@ -70,7 +70,7 @@ export default {
                      });
           },
           formatFn(d){
-              return  d<10?'0'+d:d;
+              return  d<10?'0'+d:d+'';
           },
           dayFn(d){
             return ['日','一','二','三','四','五','六'][d];
