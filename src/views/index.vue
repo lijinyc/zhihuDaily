@@ -70,7 +70,7 @@ export default {
                      });
           },
           formatFn(d){
-              return  d<10?'0'+d:d+'';
+              return  d<10?'0'+d:''+d;
           },
           dayFn(d){
             return ['日','一','二','三','四','五','六'][d];
